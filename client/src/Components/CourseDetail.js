@@ -65,7 +65,7 @@ class CourseDetail extends Component {
                         <h3 className="course--detail--title">Course</h3>
                         <h4 className="course--name">{course.title}</h4>
                         {/* <p>{`By ${user.firstName} ${user.lastName}`}</p> */}
-                        <p>{course.user ? ('By ' + course.user.firstName + ' ' + course.user.lastName) : null}</p>
+                        <p>{user ? ('By ' + user.firstName + ' ' + user.lastName) : null}</p>
                         <ReactMarkdown>{course.description}</ReactMarkdown>
                       </div>
                       <div>
