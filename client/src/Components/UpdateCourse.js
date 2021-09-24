@@ -25,12 +25,12 @@ export default class UpdateCourse extends Component {
         await Axios.get(`http://localhost:5000/api/courses/${id}`)
         .then(response => {
           this.setState({
-            course: response.data,
+            course: response.data.course,
             user: response.data.user,
-            title: response.data.title,
-            description: response.data.description,
-            estimatedTime: response.data.estimatedTime,
-            materialsNeeded: response.data.materialsNeeded
+            title: response.data.course.title,
+            description: response.data.course.description,
+            estimatedTime: response.data.course.estimatedTime,
+            materialsNeeded: response.data.course.materialsNeeded
           });
         })
         .catch(err => {
