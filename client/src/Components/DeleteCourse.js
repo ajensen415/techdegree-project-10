@@ -50,7 +50,8 @@ export default class DeleteCourse extends Component {
                 <div>
                   <h3 className="course--detail--title">Course</h3>
                   <h4 className="course--name">{course.title}</h4>
-                  <p>{`By ${owner.firstName} ${owner.lastName}`}</p>
+                  {/* <p>{`By ${owner.firstName} ${owner.lastName}`}</p> */}
+                  <p>{course.user ? ('By ' + course.user.firstName + ' ' + course.user.lastName) : null}</p>
                   <ReactMarkdown>{course.description}</ReactMarkdown>
                 </div>
               </React.Fragment>

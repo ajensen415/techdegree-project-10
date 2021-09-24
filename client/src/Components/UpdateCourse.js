@@ -26,7 +26,7 @@ export default class UpdateCourse extends Component {
         .then(response => {
           this.setState({
             course: response.data,
-            owner: response.data.owner,
+            user: response.data.user,
             title: response.data.title,
             description: response.data.description,
             estimatedTime: response.data.estimatedTime,

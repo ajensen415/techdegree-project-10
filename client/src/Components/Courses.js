@@ -13,7 +13,7 @@ class Courses extends Component {
         Axios.get(`http://localhost:5000/api/courses`)
         .then(response => {
             this.setState({
-                courses: response
+                courses: response.data.courses
             });
         });
     }

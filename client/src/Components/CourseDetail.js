@@ -7,20 +7,20 @@ class CourseDetail extends Component {
     state = { 
         course: {},
         id: this.props.match.params.id,
-        owner: {}
+        user: {}
     };
 
     componentDidMount() {
         this.getCourse();
     };
 
-    // Helper function which retrieves course data from API
+    // Retrieves course data from API
     getCourse = async function(id = this.props.match.params.id) {
         await Axios.get(`http://localhost:5000/api/courses/${id}`)
         .then( response => {
             this.setState({
                 course: response.data,
-                owner: response.data.owner
+                // user: response.data.user,
             });
         });
     };
@@ -28,7 +28,7 @@ class CourseDetail extends Component {
     render() {
 
         const { context } = this.props;
-        const { course, id, owner } = this.state;
+        const { course, id, user } = this.state;
         const { authenticatedUser } = context;
 
         return (
@@ -64,7 +64,8 @@ class CourseDetail extends Component {
                       <div>
                         <h3 className="course--detail--title">Course</h3>
                         <h4 className="course--name">{course.title}</h4>
-                        <p>By {owner.firstName} {owner.lastName}</p>
+                        {/* <p>{`By ${user.firstName} ${user.lastName}`}</p> */}
+                        <p>{course.user ? ('By ' + course.user.firstName + ' ' + course.user.lastName) : null}</p>
                         <ReactMarkdown>{course.description}</ReactMarkdown>
                       </div>
                       <div>
