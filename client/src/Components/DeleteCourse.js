@@ -24,8 +24,8 @@ export default class DeleteCourse extends Component {
     await Axios.get(`http://localhost:5000/api/courses/${id}`)
       .then(response => {
         this.setState({
-          course: response.data,
-          owner: response.data.owner
+          course: response.data.course,
+          owner: response.data.course.owner
         });
       })
       .catch(err => {
