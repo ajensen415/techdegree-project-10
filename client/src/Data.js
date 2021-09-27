@@ -50,10 +50,10 @@ export default class Data {
     }
   }
 
-  async createCourse(course, user, emailAddress, password) {
+  async createCourse(course, emailAddress, password) {
     const response = await this.api("/courses", 
     'POST', 
-    { user, course }, 
+    { course }, 
     true,
      {
        emailAddress, 

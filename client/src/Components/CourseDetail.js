@@ -12,6 +12,7 @@ class CourseDetail extends Component {
 
     componentDidMount() {
         this.getCourse();
+        console.log('test1');
     };
 
     // Retrieves course data from API
@@ -26,10 +27,11 @@ class CourseDetail extends Component {
     };
 
     render() {
-
+      
         const { context } = this.props;
-        const { course, id, user } = this.state;
+        const { course, id } = this.state;
         const { authenticatedUser } = context;
+        console.log(course);
 
         return (
             <div>
@@ -64,8 +66,7 @@ class CourseDetail extends Component {
                       <div>
                         <h3 className="course--detail--title">Course</h3>
                         <h4 className="course--name">{course.title}</h4>
-                        {/* <p>{`By ${user.firstName} ${user.lastName}`}</p> */}
-                        <p>{user ? ('By ' + user.firstName + ' ' + user.lastName) : null}</p>
+                        <p>{course.User ? ('By ' + course.User.firstName + ' ' + course.User.lastName) : null}</p>
                         <ReactMarkdown>{course.description}</ReactMarkdown>
                       </div>
                       <div>
