@@ -35,8 +35,7 @@ module.exports = (sequelize, DataTypes) => {
                 },
             },
         estimatedTime: DataTypes.STRING,
-        materialsNeeded: DataTypes.STRING,
-
+        materialsNeeded: DataTypes.STRING
         },
     {
         sequelize,

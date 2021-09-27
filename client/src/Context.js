@@ -6,13 +6,23 @@ import Data from './Data';
 const Context = React.createContext(); 
 
 export class Provider extends Component {
-  state = {
-    authenticatedUser: Cookies.get('authenticatedUser') || null
-  };
+  // state = {
+  //   authenticatedUser: Cookies.get('authenticatedUser') || null
+  // };
+
+  // constructor() {
+  //   super();
+  //   this.data = new Data();
+  // }
 
   constructor() {
     super();
     this.data = new Data();
+    this.cookie = Cookies.get('authenticatedUser');
+
+    this.state = {
+      authenticatedUser: this.cookie ? JSON.parse(this.cookie) : null
+    };
   }
 
   render() {
@@ -33,11 +43,10 @@ export class Provider extends Component {
   }
 
   signIn = async (emailAddress, password) => {
-    const user = await this.data.getUser(emailAddress, password);
+    let user = await this.data.getUser(emailAddress, password);
     if (user !== null) {
-      this.setState(() => {
-      user.emailAddress = emailAddress;
       user.password = password;
+      this.setState(() => {
         return {
           authenticatedUser: user,
         };
@@ -45,7 +54,7 @@ export class Provider extends Component {
       const cookieOptions = {
         expires: 1 
       };
-      Cookies.set('authenticatedUser', cookieOptions);
+      Cookies.set('authenticatedUser', JSON.stringify(user), cookieOptions);
     }
     return user;
   }

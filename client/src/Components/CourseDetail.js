@@ -12,7 +12,6 @@ class CourseDetail extends Component {
 
     componentDidMount() {
         this.getCourse();
-        console.log('test1');
     };
 
     // Retrieves course data from API
@@ -31,14 +30,13 @@ class CourseDetail extends Component {
         const { context } = this.props;
         const { course, id } = this.state;
         const { authenticatedUser } = context;
-        console.log(course);
 
         return (
             <div>
               <div className="actions--bar">
                 <div className="wrap">
                    {(
-                     authenticatedUser && course.userId === authenticatedUser.userId
+                     authenticatedUser && course.userId === authenticatedUser.id
                    ) ? 
                    <React.Fragment>
                    <a className="button" href={`/courses/${id}/update`}>

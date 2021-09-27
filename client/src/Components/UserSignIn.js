@@ -79,7 +79,6 @@ submit = () => {
             });
             } else {
                 this.props.history.push(from);
-                console.log(user);
             }
         })
         .catch( (error) => {

@@ -35,9 +35,8 @@ export default class UpdateCourse extends Component {
         })
         .catch(err => {
           console.error(err);
-          this.props.history.push("/notfound");
+          this.props.history.push("/");
         });
-        console.log(this.state.course);
       };
 
 
@@ -77,7 +76,7 @@ export default class UpdateCourse extends Component {
                           id="description" 
                           name="description"
                           value={description} 
-                          onChange={this.change}/>
+                          onChange={this.change} />
                       </div>
                       <div>
                         <label>Estimated Time</label>
@@ -86,14 +85,14 @@ export default class UpdateCourse extends Component {
                           name="estimatedTime"
                           type="text"
                           value={estimatedTime || ''} 
-                          onChange={this.change}/>  
+                          onChange={this.change} />  
   
                         <label>Materials Needed</label>
                         <textarea 
                           id="materialsNeeded" 
                           name="materialsNeeded"
                           value={materialsNeeded || ''} 
-                          onChange={this.change}/> 
+                          onChange={this.change} /> 
                       </div>
                     </div>             
                     </React.Fragment>
@@ -118,7 +117,7 @@ change = e => {
 submit = () => {
     const { context } = this.props;
     const { authenticatedUser } = context;
-    const userId = authenticatedUser.userId;
+    const userId = authenticatedUser.id;
 
     const {
       title,
@@ -135,6 +134,7 @@ submit = () => {
       materialsNeeded,
       userId
 }
+
     context.data.updateCourse(
         id,
         course,

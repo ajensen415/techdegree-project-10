@@ -105,6 +105,8 @@ router.put('/courses/:id', authenticateUser, asyncHandler(async (req, res) => {
                 await course.update({
                     title: req.body.title,
                     description: req.body.description,
+                    estimatedTime: req.body.estimatedTime,
+                    materialsNeeded: req.body.materialsNeeded
                 });
                 res.status(204).end();
             } else {

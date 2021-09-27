@@ -22,8 +22,8 @@ export default class Data {
     return fetch(url, options);
   }
 
-  async getUser(emailAddress, password) {
-    const response = await this.api(`/users`, 'GET', null, true, { emailAddress, password });
+  async getUser(emailAddress, password, firstName, lastName) {
+    const response = await this.api(`/users`, 'GET', null, true, { emailAddress, password, firstName, lastName });
     if (response.status === 200) {
       return response.json().then(data => data);
     }
@@ -53,7 +53,7 @@ export default class Data {
   async createCourse(course, emailAddress, password) {
     const response = await this.api("/courses", 
     'POST', 
-    { course }, 
+    course , 
     true,
      {
        emailAddress, 

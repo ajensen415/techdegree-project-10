@@ -95,7 +95,7 @@ class CreateCourse extends Component {
     const { context } = this.props;
     const { authenticatedUser } = context;
     const { title, description, estimatedTime, materialsNeeded} = this.state;
-    const userId = authenticatedUser.userId;
+    const userId = authenticatedUser.id;
     const course = {
       title,
       description,
